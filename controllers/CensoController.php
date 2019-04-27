@@ -100,13 +100,24 @@ class CensoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $person = $model->person;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isAjax && $person->load($_POST))
+        {
+            Yii::$app->response->format = 'json';
+            return \yii\widgets\ActiveForm::validate($person);
+        }
+
+        if ($person->load(Yii::$app->request->post())) {
+            $person = $this->verifyAndSavePerson($person);
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('update', [
             'model' => $model,
+            'person' => $person
         ]);
     }
 

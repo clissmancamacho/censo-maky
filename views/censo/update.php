@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Censo */
 
-$this->title = 'Update Censo: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Censos', 'url' => ['index']];
+$this->title = 'Actualizar Persona: ' . $model->person->nombre . " " . $model->person->apellido;
+$this->params['breadcrumbs'][] = ['label' => 'Listado', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'person' => $person
     ]) ?>
 
 </div>

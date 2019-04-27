@@ -66,9 +66,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'header' => 'Acciones',
                         'class' => 'yii\grid\ActionStatus',
-                        'template' => '{view} {update} {delete}',
+                        'template' => '{view} {update}',
                         'contentOptions' => [
-                            'style' => 'width:115px;  min-width:115px;'
                         ]
                     ],
                     [
